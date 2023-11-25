@@ -5,127 +5,96 @@ const express = require("express");
 
 const app = express();
 
-app.use(express.json());// permitir obtener el body en formato json 
-app.use(express.urlencoded({ extended: true }));// permitir obtener el body en formato url-encoded
+app.use(express.json()); // permitir obtener el body en formato json
+app.use(express.urlencoded({ extended: true })); // permitir obtener el body en formato url-encoded
 
-
-// definicion de funciones 
+// definicion de funciones
 
 const findAll = (req, res) => {
-
-
   return res.status(200).json({
-    
-    message:"method get findAll"
-})
-
-}
+    message: "method get findAll",
+  });
+};
 
 const create = (req, res) => {
-
-  const disease = req-body;
+  const disease = req - body;
 
   return res.status(201).json({
-    
-    message:"method post - create",
-    data: disease
- })
- 
- }
+    message: "method post - create",
+    data: disease,
+  });
+};
 
- const findOne = (req, res) => {
-
-
+const findOne = (req, res) => {
   return res.status(200).json({
-    
-    message:"method get findOne"
-})
-
-}
+    message: "method get findOne",
+  });
+};
 
 const update = (req, res) => {
-
-
   return res.status(200).json({
-    
-    message:"method get update"
-})
-
-}
+    message: "method get update",
+  });
+};
 
 const deleteOne = (req, res) => {
-
-
   return res.status(200).json({
-    
-    message:"method get delete"
-})
-
-}
-
+    message: "method get delete",
+  });
+};
 
 //3. definir el endpoint
 
 //endpoint para buscar todas las enfermedades genericas
 
-app.get('/api/v1/genetic-diseases', findAll)
+app.get("/api/v1/genetic-diseases", findAll);
 
-//endpoint para crear enfermedad generica 
-app.post('/api/v1/genetic-diseases', create)
+//endpoint para crear enfermedad generica
+app.post("/api/v1/genetic-diseases", create);
 
-//endpoint para buscar enfermedad generica 
-app.get('/api/v1/genetic-diseases', findOne)
+//endpoint para buscar enfermedad generica
+app.get("/api/v1/genetic-diseases", findOne);
 
-//endpoint para actualizar enfermedad generica 
-app.patch('/api/v1/genetic-diseases', update)
+//endpoint para actualizar enfermedad generica
+app.patch("/api/v1/genetic-diseases", update);
 
-//endpoint para eliminar enfermedad generica 
-app.delete('/api/v1/genetic-diseases', deleteOne)
+//endpoint para eliminar enfermedad generica
+app.delete("/api/v1/genetic-diseases", deleteOne);
 
+//endpoint para buscar una enfermedade genetica
 
-
-
-
-//endpoint para buscar una enfermedade genetica  
-
-app.get('/api/v1/genetic-diseases/:id', (req, res) =>{
-
+app.get("/api/v1/genetic-diseases/:id", (req, res) => {
   console.log(req.params);
 
-return res.status(200).json({
-  message : 'method get-findOne',
-  id: req.params.id
-})
+  return res.status(200).json({
+    message: "method get-findOne",
+    id: req.params.id,
+  });
+});
 
-})
+//endpoint para actualizar  una enfermedad en especial
 
-//endpoint para actualizar  una enfermedad en especial 
+app.patch("/api/v1/genetic-diseases/:id"),
+  (req, res) => {
+    const { id } = req.params;
 
-app.patch('/api/v1/genetic-diseases/:id'), (req, res) =>{
+    return res.status(200).json({
+      message: "method patch-update",
+      id,
+    });
+  };
 
-  const { id } = req.params;
+//endpoint para delete una enfermedad en especial
 
- return res.status(200).json({
-    message : 'method patch-update',
-    id,
+app.delete("/api/v1/genetic-diseases/:id"),
+  (req, res) => {
+    const { id } = req.params;
 
-  })
-}
-
-
-//endpoint para delete una enfermedad en especial 
-
-app.delete('/api/v1/genetic-diseases/:id'), (req, res) =>{
-
-  const { id } = req.params;
-
- return res.status(200).json({
-    message : 'method delete -delete',
-    id,
-
-  })
-}
-
+    return res.status(200).json({
+      message: "method delete -delete",
+      id,
+    });
+  };
 
 //4. poner a escuhar por un puerto
 app.listen(3000, () => {
@@ -140,5 +109,3 @@ get(parametro1)
 
 parametro1= endpoint
 parametro2 =callback //funcion que se le pasa como parametro a otra funcion*/
-
-
