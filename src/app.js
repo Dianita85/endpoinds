@@ -61,40 +61,7 @@ app.patch("/api/v1/genetic-diseases", update);
 //endpoint para eliminar enfermedad generica
 app.delete("/api/v1/genetic-diseases", deleteOne);
 
-//endpoint para buscar una enfermedade genetica
 
-app.get("/api/v1/genetic-diseases/:id", (req, res) => {
-  console.log(req.params);
-
-  return res.status(200).json({
-    message: "method get-findOne",
-    id: req.params.id,
-  });
-});
-
-//endpoint para actualizar  una enfermedad en especial
-
-app.patch("/api/v1/genetic-diseases/:id"),
-  (req, res) => {
-    const { id } = req.params;
-
-    return res.status(200).json({
-      message: "method patch-update",
-      id,
-    });
-  };
-
-//endpoint para delete una enfermedad en especial
-
-app.delete("/api/v1/genetic-diseases/:id"),
-  (req, res) => {
-    const { id } = req.params;
-
-    return res.status(200).json({
-      message: "method delete -delete",
-      id,
-    });
-  };
 
 //4. poner a escuhar por un puerto
 app.listen(3000, () => {
